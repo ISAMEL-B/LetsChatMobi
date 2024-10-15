@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', serif; /* Changed to Times New Roman */
+    background-color: #f0f0f5; /* Soft, neutral background */
+    color: #333; /* Dark text for contrast */
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    background-color: #4a90e2; /* Cool blue header */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    color: white; /* White text for contrast */
+}
+
+.first {
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #333; /* Darker text */
+}
+
+.card {
+    background-color: #ffffff; /* White card background */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    color: #333; /* Dark text */
+}
+
+a {
+    color: #4a90e2; /* Same as header for consistency */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2a6dbf; /* Darker shade on hover */
+}
+
+button {
+    background-color: #ff6f61; /* Vibrant coral for buttons */
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff4f3a; /* Darker coral on hover */
+}
+
+h2 {
+    margin: 0 0 10px;
+    font-size: 2em;
+    text-align: center;
+}
+
+h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+p {
+    text-align: justify;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+    h2 {
+        font-size: 1.1em;
+    }
+    h3 {
+        font-size: 1em;
+    }
+}

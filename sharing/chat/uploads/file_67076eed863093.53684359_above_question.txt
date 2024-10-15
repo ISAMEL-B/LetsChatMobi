@@ -1,0 +1,76 @@
+Sure! Here’s the entire project description you provided:
+
+---
+
+**MIS 7105 Web-based Information Systems Course Project I**
+
+In this project, you will create a photo-sharing Web site. The Web site will display pre-entered information in the database. In future projects, you will add additional features, such as the ability to add new photos and to tag photos with the names of users.
+
+### Setup
+
+**Problem 1: Use Workbench to Create a Database called photo-sharing**
+
+- Photos in the photo-sharing site are organized by user. Start off by creating the following tables:
+  
+  **User**, with the following attributes:
+  - id: Primary key for this user.
+  - first_name: First name of the user.
+  - last_name: Last name of the user.
+
+- Each user can upload multiple photos.
+
+  **Photo** with the following attributes:
+  - id: Primary key for this photo.
+  - user_id: Identifier for the user who created the photo.
+  - date_time: The date and time when the photo was added to the database.
+  - file_name: Name of a file containing the actual photo.
+
+- For each photo, there can be multiple comments (any user can comment on any photo). Use the same approach as above to create the table with the following attributes:
+
+  **Comment** with the following attributes:
+  - id: Primary key for this comment.
+  - photo_id: Identifier for the photo to which this comment belongs.
+  - user_id: Identifier for the user who created the comment.
+  - date_time: The date and time when the comment was created.
+  - comment: The text of the comment.
+
+- Include the relationships between tables, e.g., each photo is associated with a user, and each comment is associated with both a photo and the user who created the comment.
+
+### Problem 2: Create the Application
+
+Create a controller and views that implement two URLs. The first URL is `/pics/allUsers`. When this URL is referenced, your application must return a Web page that displays a list of all users in the database. The user names must be links: clicking on a user name displays the photos for that user, as described below.
+
+The second URL supported by your application has the form `/pics/user/id`, where `id` is the database identifier for a particular user. When this URL is referenced, your application must return a web page displaying all of the photos belonging to that user. For each photo, you must display the photo itself, the creation time for the photo, and all of the comments for that photo. For each comment, you must display the time when the comment was created, the name of the user who created the comment, and the text of the comment. The creator for each comment should be a link that can be clicked to switch to the photos page for that user. Although you don't need to spend a lot of time on the appearance of the pages you generate, they should be neat and understandable. They should have meaningful titles, and the information layout should be clean (e.g., it should be clear which photo each comment applies to).
+
+### Problem 3: Simple Login
+
+Create a new controller that implements 3 new URLs:
+- `/user/login`: displays a simple login form where the user can enter their login name (no passwords for now).
+- `/user/post_login`: the login form posts to this URL. Its action method checks to ensure that there exists a user with the given login. If so, it stores the user id in the session where it can be checked by other code that needs to know whether a user is logged in. If there is no such user, then the action must redisplay the login form with an appropriate error message. After a successful login, you should redirect to the page displaying the user's photos.
+- `/user/logout`: logs the user out by clearing the information stored in the session. This URL should redirect back to the login page.
+
+In addition to implementing these URLs, include support for login/logout in the standard layout used for all of your application's pages. If there is no user logged in, the banner at the top of each page should include a small "Login" link to the login page. If there is a user logged in, the banner should include a small message "Hi Simon! Logout," where "Simon" is the first name of the logged-in user and "Logout" is a link to the logout page.
+
+### Problem 4: New Comments
+
+Once you have implemented user login, the next step is to implement a form for adding comments to existing photos. Implement a URL `/pics/comment/id` that displays a form where a user can add a comment for the photo whose primary key is `id`. You should also display the photo on this page so the user can see it while he/she is typing the comment. The form should post to the URL `/pics/post_comment/id`; your implementation for this URL should create a new comment in the database. The comment must include the identifier of the logged-in user and the time when the comment was created. Make sure that new comments can be viewed in the same way as pre-existing comments.
+
+Once you've implemented the form for new comments, modify the page `/pics/user/id` to display a "New Comment" link next to each photo, which will go to the new-comment form for that photo. Your implementation must handle the following errors:
+- If there is no user logged in, then it should not be possible to add comments.
+- Do not allow empty comments: return to the new-comment form and display an error message. Use the JavaScript validation mechanism to implement this.
+
+### Problem 5: Photo Uploading
+
+Allow users to add new photos. To do this, implement a URL `/pics/photo`, which displays a form where the user can select a photo file for upload. The form should post to the URL `/pics/post_photo`, which copies the incoming photo data to a file in the directory `project/images` and creates a new record in the database containing the name of the photo file, the creation time, and the identifier of the user. Also, add a "New Photo" link at an appropriate place in one of your existing pages, which users can click to go to the photo upload form. Your implementation should check to make sure that a user is logged in and prevent photo uploading if not.
+
+### Problem 6: Registration and Passwords
+
+Enhance the login mechanism with support for new-user registration and passwords.
+- Add support for two new URLs: `/user/register` displays a form to register a new user, and it posts to `/user/post_register`. The registration page provides fields for the new user's first and last names, their login, plus two fields in which identical copies of the password must be typed. The post action must make sure that the new login doesn't already exist and that the two copies of the password are identical. If the information is valid, then a new user gets created in the database and the action redirects to the login page. If there is an error, then the registration form gets redisplayed along with appropriate error messages. Be sure to use the JavaScript validation mechanism.
+- Add a password field to the login form and check it as part of the post action for the form.
+- On the login form, add a link to the registration page.
+- In your implementation of passwords, you have to encrypt your password.
+
+**Deadline is 29th September 2024**
+
+--- 

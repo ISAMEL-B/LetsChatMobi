@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #e9dbdb;
+    z-index: 1;
+}
+
+.welcome-section {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on small screens */
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-image: url('https://source.unsplash.com/1600x900/?pharmaceutical,lab');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 20px; /* Add padding for small screens */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.content {
+    color: white;
+    text-align: center;
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+.content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+}
+
+/* Moving text animation */
+.welcome {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+    animation: moveText 15s linear infinite;
+}
+
+/* Keyframes for moving text */
+@keyframes moveText {
+    0% {
+        transform: translateX(-20%);
+    }
+    50% {
+        transform: translateX(20%);
+    }
+    100% {
+        transform: translateX(-20%);
+    }
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 1.5em; /* Smaller font size for smaller screens */
+    }
+    .content p {
+        font-size: 1.2em; /* Smaller font size for smaller screens */
+    }
+    .btn {
+        padding: 10px 20px; /* Smaller button size */
+        font-size: 1em; /* Smaller button text */
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome {
+        font-size: 1.8rem; /* Adjust welcome text size */
+    }
+}

@@ -1,0 +1,500 @@
+  /* General Styles */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+/* Chat Frame */
+.card-container.chat-frame {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly less transparent for better readability */
+    width: 100%;
+    max-width: 600px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevent content from overflowing */
+    position: relative;
+}
+
+/* Chat Header */
+.chat-header {
+    padding: 5px;
+    background-color: #0088cc;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-header img {
+    width: 50px; /* Adjusted size */
+    height: 50px; /* Adjusted size */
+    border-radius: 50%; /* Use 50% for a perfect circle */
+    margin-right: 15px; /* Margin between image and name */
+    object-fit: cover;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+/* Message Container */
+.message-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-image: url('whitep.png'); /* Adding background image URL */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Last Messages Section */
+.last-messages {
+    margin-bottom: 20px;
+}
+
+.last-messages h3 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333333;
+}
+
+.last-sent, .last-received {
+    margin-bottom: 15px;
+}
+
+.last-sent h4, .last-received h4 {
+    margin-bottom: 5px;
+    font-size: 1em;
+    color: #555555;
+}
+
+/* Message Card */
+.message-card {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 15px 10px;
+    border-radius: 15px;
+    position: relative;
+    word-wrap: break-word;
+    border: 1px solid #add8e6; /* Light blue solid border */
+}
+
+.message-card.sent {
+    background-color: #d1e7dd; /* Light green for sent messages */
+    align-self: flex-end; /* Align to the right */
+    margin-left: auto; /* Push to the right */
+    border-top-left-radius: 0;
+}
+
+.message-card.received {
+    background-color: #ffe0b2; /* Light orange for received messages */
+    align-self: flex-start; /* Align to the left */
+    margin-right: auto; /* Push to the left */
+    border-top-right-radius: 0;
+}
+
+.message-time {
+    font-size: 0.75em;
+    color: #999999;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* Message Actions */
+.message-actions {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: none;
+    gap: 5px;
+}
+
+.message-card:hover .message-actions {
+    display: flex;
+}
+
+.message-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555555;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.message-actions button:hover {
+    color: #000;
+}
+
+/* Attachments */
+.attachment {
+    display: block;
+    margin-top: 5px;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.attachment:hover {
+    text-decoration: underline;
+}
+
+/* Reply Area */
+.reply-area {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative; /* Allow positioning of children elements */
+}
+
+.reply-input {
+    flex: 1;
+    resize: none;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    margin: 0 10px;
+    font-size: 1em;
+    transition: border-color 0.3s ease; /* Transition effect for border color */
+}
+
+.reply-input:focus {
+    border: 2px solid #0077b3; /* Darker blue when focused */
+}
+
+/* Buttons in Reply Area */
+.reply-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #555;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.reply-button:hover {
+    color: #000;
+}
+
+/* Send Button */
+.send-button {
+    background-color: #0088cc;
+    border: none;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #0077b3;
+}
+
+/* Selected File Display */
+#fileDisplay {
+    position: absolute;
+    bottom: 100%;
+    left: 10px;
+    margin-bottom: 5px;
+    font-style: italic;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px; /* Medium width */
+    font-size: 14px;  /* Adjust font size */
+    padding: 5px;     /* Add padding for better appearance */
+    background-color: #f0f0f0; /* Light background for readability */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1; /* Ensure it stays above other elements */
+}
+
+/* New Styles for Message Images */
+.message-image {
+    max-width: 250px;    /* Maximum width */
+    max-height: 250px;   /* Maximum height */
+    width: auto;         /* Maintain aspect ratio */
+    height: auto;        /* Maintain aspect ratio */
+    border-radius: 5px;  /* Rounded corners */
+    margin-top: 5px;     /* Space above the image */
+    display: block;      /* Ensures proper layout */
+}
+
+/* Responsive Design for Message Images */
+@media (max-width: 600px) {
+    .message-image {
+        max-width: 150px;  /* Reduce width for small screens */
+        max-height: 150px; /* Reduce height for small screens */
+    }
+
+    #fileDisplay {
+        max-width: 150px; /* Adjust max-width for small screens */
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .message-image {
+        max-width: 200px;  /* Adjust size for medium screens */
+        max-height: 200px;
+    }
+
+    #fileDisplay {
+        max-width: 200px; /* Adjust max-width for medium screens */
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .message-image {
+        max-width: 250px;  /* Keep larger size for bigger screens */
+        max-height: 250px;
+    }
+
+    #fileDisplay {
+        max-width: 250px; /* Adjust max-width for large screens */
+        font-size: 14px;
+    }
+}
+
+/* Optional: Style for Audio Players */
+.message-audio {
+    margin-top: 5px;
+    width: 100%;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close-modal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-modal-content textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.edit-modal-content button {
+    background-color: #0088cc;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-modal-content button:hover {
+    background-color: #0077b3;
+}
+
+/* Enhanced Message Actions */
+.message-actions .edit-action:hover,
+.message-actions .delete-action:hover {
+    color: #000;
+}
+
+.message-actions .edit-action {
+    margin-right: 5px;
+}
+
+.message-actions .delete-action {
+    margin-left: 5px;
+}
+
+/* Responsive Design for Chat Header Image */
+@media (max-width: 768px) {
+    .chat-header img {
+        width: 50px; /* Maintain size or adjust as needed */
+        height: 50px;
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
+    .chat-header h2 {
+        font-size: 1em;
+    }
+
+    .card-container.chat-frame {
+        height: 85vh; /* Adjust height for smaller screens */
+        border-radius: 0;
+    }
+}
+
+ /* Tick Icon Styles */
+        .tick {
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+            color: black; /* Default color */
+        }
+        .tick.brown {
+            color: #A52A2A; /* Brown color */
+        }
+        .tick.green {
+            color: green; /* Green color for read messages */
+        }
+
+        /* File Name Display */
+        .file-name-display {
+            margin-bottom: 10px; /* Space between the file name and textarea */
+            font-style: italic;
+            background-color: #e0e0e0;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Refresh Button Styles */
+        .refresh-button {
+            position: fixed;
+            top: 20px; /* Adjust as needed to position above reply area */
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .refresh-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Optional: Spinner for refresh */
+        .refresh-button .spinner {
+            display: none;
+            border: 2px solid #f3f3f3; /* Light grey */
+            border-top: 2px solid #fff; /* White */
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        .refresh-button.loading .spinner {
+            display: block;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Overlay for Modal */
+        .overlay {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Modal Image Styling */
+        .modal-content img {
+            max-highlight:auto;
+            width: 70%; /* Medium size */
+            max-width: 700px; /* Ensures it’s not too big */
+            border-radius: 10px;
+        }
+
+        /* Prevent horizontal scrolling */
+        .message-container {
+            overflow-y: auto;
+            overflow-x: hidden; /* Disable horizontal scrolling */
+            word-wrap: break-word; /* Ensures long messages wrap properly */
+        }
+
+        /* Message Card Styles */
+        .message-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            position: relative;
+            max-width: 80%; /* Limit width */
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        .message-image, .message-video {
+            width: 100%; /* Full width */
+            height: 100%; /* Fill the height of the card */
+            object-fit: cover; /* Maintain aspect ratio and fill the container */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .message-video {
+            max-height: 100%; /* Allow video to fill the card height */
+        }
+
+        
